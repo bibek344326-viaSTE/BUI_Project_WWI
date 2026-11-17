@@ -796,15 +796,18 @@
         "measures": [
           {
             "name": "Order Count",
-            "expression": "DISTINCTCOUNT([WWI Order ID])"
+            "expression": "DISTINCTCOUNT([WWI Order ID])",
+            "formatString": "0"
           },
           {
             "name": "Ordered Quantity",
-            "expression": " SUM('Orders'[Quantity])"
+            "expression": " SUM('Orders'[Quantity])",
+            "formatString": "0"
           },
           {
             "name": "Average Order Value",
-            "expression": " DIVIDE([Order Value Excl. Tax], [Order Count])"
+            "expression": " DIVIDE([Order Value Excl. Tax], [Order Count])",
+            "formatString": "0.00"
           },
           {
             "name": "Order Count YTD",
@@ -814,11 +817,13 @@
               "    [Order Count],",
               "    DATESYTD('Date'[Date])",
               ")"
-            ]
+            ],
+            "formatString": "0"
           },
           {
             "name": "Order Value Excl. Tax",
-            "expression": " SUM('Orders'[Total Excluding Tax])"
+            "expression": " SUM('Orders'[Total Excluding Tax])",
+            "formatString": "0.00"
           },
           {
             "name": "Orders per Customer",
@@ -838,7 +843,8 @@
               "    [Order Count],",
               "    KEEPFILTERS(NOT ISBLANK('Orders'[WWI Backorder ID]))",
               ")"
-            ]
+            ],
+            "formatString": "0"
           },
           {
             "name": "Picking Completion Rate",
@@ -846,7 +852,52 @@
               "",
               "DIVIDE([Picked Orders], [Order Count])"
             ],
-            "formatString": "0.00 %;-0.00 %;0.00 %"
+            "formatString": "0.00 %;-0.00 %;0.00 %",
+            "kpi": {
+              "description": "Percentage of customer orders fully picked",
+              "targetExpression": "0,95",
+              "targetFormatString": "0.00 %;-0.00 %;0.00 %",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='Orders'[Picking Completion Rate] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.9,-1,",
+                "\t                If(x<0.95,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "StaticValue"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Absolute"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "0.9"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "0.95"
+                }
+              ]
+            }
           },
           {
             "name": "Average Picking Days",
@@ -856,7 +907,8 @@
               "    VALUES('Orders'[WWI Order ID]),",
               "    CALCULATE(MAX('Orders'[Picking Days]))",
               ")"
-            ]
+            ],
+            "formatString": "0.00"
           },
           {
             "name": "Picked Orders",
@@ -866,7 +918,8 @@
               "    [Order Count],",
               "    KEEPFILTERS(NOT ISBLANK('Orders'[Order Completion Date]))",
               ")"
-            ]
+            ],
+            "formatString": "0"
           },
           {
             "name": "Orders with Unpicked Lines",
@@ -876,7 +929,8 @@
               "    [Order Count],",
               "    KEEPFILTERS(ISBLANK('Orders'[Order Completion Date]))",
               ")"
-            ]
+            ],
+            "formatString": "0"
           },
           {
             "name": "Unpicked Quantity",
@@ -886,7 +940,8 @@
               "    SUM('Orders'[Quantity]),",
               "    KEEPFILTERS(ISBLANK('Orders'[Picked Date Key]))",
               ")"
-            ]
+            ],
+            "formatString": "0"
           }
         ],
         "annotations": [
