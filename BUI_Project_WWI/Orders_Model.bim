@@ -207,6 +207,23 @@
             }
           }
         ],
+        "hierarchies": [
+          {
+            "name": "Customer Hierarchy",
+            "levels": [
+              {
+                "name": "Category",
+                "ordinal": 0,
+                "column": "Category"
+              },
+              {
+                "name": "Customer",
+                "ordinal": 1,
+                "column": "Customer"
+              }
+            ]
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -269,6 +286,7 @@
             "name": "Calendar Month Label",
             "dataType": "string",
             "sourceColumn": "Calendar Month Label",
+            "sortByColumn": "Calendar Month Number",
             "sourceProviderType": "WChar"
           },
           {
@@ -323,6 +341,28 @@
               "query": " \t\t\t\tSELECT [Dimension].[Date].*   FROM [Dimension].[Date] ",
               "dataSource": "SqlServer Bibek WideWorldImportersDW"
             }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Calendar Hierarchy",
+            "levels": [
+              {
+                "name": "Calendar Year",
+                "ordinal": 0,
+                "column": "Calendar Year"
+              },
+              {
+                "name": "Calendar Month Label",
+                "ordinal": 1,
+                "column": "Calendar Month Label"
+              },
+              {
+                "name": "Date",
+                "ordinal": 2,
+                "column": "Date"
+              }
+            ]
           }
         ],
         "annotations": [
@@ -547,6 +587,23 @@
               "query": " \t\t\t\tSELECT [Dimension].[Stock Item].*   FROM [Dimension].[Stock Item] ",
               "dataSource": "SqlServer Bibek WideWorldImportersDW"
             }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Stock Item Hierarchy",
+            "levels": [
+              {
+                "name": "Brand",
+                "ordinal": 0,
+                "column": "Brand"
+              },
+              {
+                "name": "Stock Item",
+                "ordinal": 1,
+                "column": "Stock Item"
+              }
+            ]
           }
         ],
         "annotations": [
