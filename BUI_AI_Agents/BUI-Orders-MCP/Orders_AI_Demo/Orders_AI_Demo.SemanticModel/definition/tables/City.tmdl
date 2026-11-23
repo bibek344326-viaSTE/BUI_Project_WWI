@@ -1,0 +1,142 @@
+table City
+	lineageTag: 85747a3e-f6e8-49b6-9c8b-4020db78b8ee
+
+	column 'City Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: cffdf646-daf6-462a-8a51-55e449d232a2
+		summarizeBy: none
+		sourceColumn: City Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WWI City ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ef803f7-0b10-40e6-9c2a-f6087b11f577
+		summarizeBy: count
+		sourceColumn: WWI City ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: f68d85ba-4b69-4ed8-9b74-d022f4cdbb4a
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Province'
+		dataType: string
+		lineageTag: bcaa2b21-19f0-4239-b0be-b47061df3ab6
+		summarizeBy: none
+		sourceColumn: State Province
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: db972677-31d0-41c6-ac41-042d5d5b12c2
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Continent
+		dataType: string
+		lineageTag: 617b6bb4-56e4-4320-acb4-b93911d716a0
+		summarizeBy: none
+		sourceColumn: Continent
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Territory'
+		dataType: string
+		lineageTag: 0ae834d6-b3ed-4b77-bce3-0915f1976cd0
+		summarizeBy: none
+		sourceColumn: Sales Territory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 01df041c-68ee-47c6-8209-6f3459ba34d1
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subregion
+		dataType: string
+		lineageTag: 957ef1ec-2316-498a-992a-e8677e8ff920
+		summarizeBy: none
+		sourceColumn: Subregion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: a73f7e8e-6bf6-42fb-9c8f-f7814c011822
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Latest Recorded Population'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ea2b2ea-5dd0-4cd5-b8c4-2c779d17d7c5
+		summarizeBy: sum
+		sourceColumn: Latest Recorded Population
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valid From'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7d146328-efa9-4c28-afa9-3368f5a406c8
+		summarizeBy: none
+		sourceColumn: Valid From
+
+		variation Variation
+			isDefault
+			relationship: 99a701cb-0f04-4357-b723-ed729309257e
+			defaultHierarchy: LocalDateTable_beb5cb46-c169-4a77-b0a9-46b88562ecae.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valid To'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 266bd60d-68c2-48d2-89d8-760f82ec3bca
+		summarizeBy: none
+		sourceColumn: Valid To
+
+		variation Variation
+			isDefault
+			relationship: 4210364e-1e0d-4c40-bcdc-da3359da46c7
+			defaultHierarchy: LocalDateTable_b0c28b9f-5335-47b7-9f9c-3a1568269196.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lineage Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c4270e8d-3760-483e-bd42-8a1b8e081bd6
+		summarizeBy: count
+		sourceColumn: Lineage Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition City = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("LIMBO_BIBEK\BACHELOR", "WideWorldImportersDW"),
+				  #"Navigation 1" = Source{[Schema = "Dimension", Item = "City"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

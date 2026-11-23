@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 958.22149632795481,
+            "y": 302.10122119851837
+          },
+          "nodeIndex": "City",
+          "nodeLineageTag": "85747a3e-f6e8-49b6-9c8b-4020db78b8ee",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 284.80671237487741
+          },
+          "nodeIndex": "Customer",
+          "nodeLineageTag": "8b560958-da58-486a-823c-e6402f5a2228",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 233.3445575847436,
+            "y": 638.53864097826079
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "f32887d4-75fb-4e09-9ab6-ad44a37b38f1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 763.469058709489,
+            "y": 655.68060251976215
+          },
+          "nodeIndex": "Employee",
+          "nodeLineageTag": "59c4c46d-e63b-4d6d-9647-35d1fab84124",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 520.30115642587816,
+            "y": 302.16734009316406
+          },
+          "nodeIndex": "Orders",
+          "nodeLineageTag": "536fd243-0418-472e-bd7d-bb5b59aadba8",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 762.9709874332334,
+            "y": -50
+          },
+          "nodeIndex": "Stock Item",
+          "nodeLineageTag": "3d72ab35-94a0-4a88-b95f-f280af32b6e2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

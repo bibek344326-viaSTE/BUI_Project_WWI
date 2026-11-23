@@ -1,0 +1,94 @@
+table Employee
+	lineageTag: 59c4c46d-e63b-4d6d-9647-35d1fab84124
+
+	column 'Employee Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: b5fbd917-33ec-4acc-a965-621d887559ad
+		summarizeBy: none
+		sourceColumn: Employee Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WWI Employee ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 566c493a-1793-4b1a-bdc0-fd693fd97eaf
+		summarizeBy: count
+		sourceColumn: WWI Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee
+		dataType: string
+		lineageTag: f77bf7d6-d853-4630-90c4-0cb1526c082f
+		summarizeBy: none
+		sourceColumn: Employee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Preferred Name'
+		dataType: string
+		lineageTag: 99bd62b2-3456-4dd7-9cd1-2af6dc59cf88
+		summarizeBy: none
+		sourceColumn: Preferred Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Salesperson'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 40abdaaa-25ec-41e5-9ff7-a76e9cb66e4d
+		summarizeBy: none
+		sourceColumn: Is Salesperson
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valid From'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 78897372-f1c2-4198-8e26-f821ce1f6709
+		summarizeBy: none
+		sourceColumn: Valid From
+
+		variation Variation
+			isDefault
+			relationship: edd89970-0ac4-4a51-9b7d-9616bc8fe3d9
+			defaultHierarchy: LocalDateTable_be069568-ad41-437b-90ec-4bd4c4f24e7c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valid To'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1f7455f7-4c1a-4b6d-add9-df37251e07b3
+		summarizeBy: none
+		sourceColumn: Valid To
+
+		variation Variation
+			isDefault
+			relationship: 9ee9a200-5abb-4ec0-887a-5280d01905b8
+			defaultHierarchy: LocalDateTable_a8fe6dee-4b6f-4d48-b836-97143011c9f1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lineage Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6236e39b-bb83-4662-bf7d-952aa6ee664e
+		summarizeBy: count
+		sourceColumn: Lineage Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Employee = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("LIMBO_BIBEK\BACHELOR", "WideWorldImportersDW"),
+				  #"Navigation 1" = Source{[Schema = "Dimension", Item = "Employee"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

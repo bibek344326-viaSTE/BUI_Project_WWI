@@ -1,0 +1,89 @@
+relationship 99a701cb-0f04-4357-b723-ed729309257e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: City.'Valid From'
+	toColumn: LocalDateTable_beb5cb46-c169-4a77-b0a9-46b88562ecae.Date
+
+relationship 4210364e-1e0d-4c40-bcdc-da3359da46c7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: City.'Valid To'
+	toColumn: LocalDateTable_b0c28b9f-5335-47b7-9f9c-3a1568269196.Date
+
+relationship e4108e08-4963-4423-9c8a-82b1450972ce
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Customer.'Valid From'
+	toColumn: LocalDateTable_3ae42203-3be2-4fe3-9558-28d0b374cf9e.Date
+
+relationship 60250213-b8b0-4b6a-a0c1-7ecc49d0df97
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Customer.'Valid To'
+	toColumn: LocalDateTable_a9c86bf0-96b7-4385-b460-b11795df2bbb.Date
+
+relationship 567363c5-b04b-47ad-a7d5-112a9e00f853
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.Date
+	toColumn: LocalDateTable_b2c453de-ce96-447f-873a-99e2ab650fac.Date
+
+relationship edd89970-0ac4-4a51-9b7d-9616bc8fe3d9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employee.'Valid From'
+	toColumn: LocalDateTable_be069568-ad41-437b-90ec-4bd4c4f24e7c.Date
+
+relationship 9ee9a200-5abb-4ec0-887a-5280d01905b8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employee.'Valid To'
+	toColumn: LocalDateTable_a8fe6dee-4b6f-4d48-b836-97143011c9f1.Date
+
+relationship aa5ac538-fe1b-48ad-a82b-994efb912af5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Stock Item'.'Valid From'
+	toColumn: LocalDateTable_3493ddd0-bd35-4145-abd0-ca0a8780f550.Date
+
+relationship 44442993-1c3a-4cda-9125-054dcf538cdb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Stock Item'.'Valid To'
+	toColumn: LocalDateTable_02a11598-d7ad-4a2f-a3da-a952fd1299d0.Date
+
+relationship f262bc0e-91f1-416d-9065-296d8ae0de53
+	fromColumn: Orders.'City Key'
+	toColumn: City.'City Key'
+
+	annotation PBI_IsFromSource = FS
+
+relationship d1db8e8e-3568-47ff-8b15-31b49257f364
+	fromColumn: Orders.'Customer Key'
+	toColumn: Customer.'Customer Key'
+
+	annotation PBI_IsFromSource = FS
+
+relationship 55d0e600-27cc-4bc2-8742-3faef2b0ff5a
+	fromColumn: Orders.'Order Date Key'
+	toColumn: Date.Date
+
+	annotation PBI_IsFromSource = FS
+
+relationship c6258e8b-6d71-4258-a59a-5ee0b428dc11
+	isActive: false
+	fromColumn: Orders.'Picked Date Key'
+	toColumn: Date.Date
+
+	annotation PBI_IsFromSource = FS
+
+relationship 5fa1330b-d25a-4b66-9140-60dee468d1bd
+	fromColumn: Orders.'Picker Key'
+	toColumn: Employee.'Employee Key'
+
+	annotation PBI_IsFromSource = FS
+
+relationship b7899f12-bfb7-44e3-b58c-9274a0c3cd3e
+	isActive: false
+	fromColumn: Orders.'Salesperson Key'
+	toColumn: Employee.'Employee Key'
+
+	annotation PBI_IsFromSource = FS
+
+relationship 9a5e1ac9-d891-4426-8940-6d56b4974107
+	fromColumn: Orders.'Stock Item Key'
+	toColumn: 'Stock Item'.'Stock Item Key'
+
+	annotation PBI_IsFromSource = FS
+

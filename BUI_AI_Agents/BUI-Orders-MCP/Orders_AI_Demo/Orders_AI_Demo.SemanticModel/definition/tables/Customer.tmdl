@@ -1,0 +1,117 @@
+table Customer
+	lineageTag: 8b560958-da58-486a-823c-e6402f5a2228
+
+	column 'Customer Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 20878ae6-43e9-4eeb-a90f-ac36ef21b684
+		summarizeBy: none
+		sourceColumn: Customer Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WWI Customer ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: ab14dd94-e900-4b11-909d-5622bb981cf1
+		summarizeBy: count
+		sourceColumn: WWI Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer
+		dataType: string
+		lineageTag: f1dc525f-3bea-4d1e-894d-320b23ac1ed9
+		summarizeBy: none
+		sourceColumn: Customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bill To Customer'
+		dataType: string
+		lineageTag: 2c439be4-89c0-41ce-b4c7-ddfde878e347
+		summarizeBy: none
+		sourceColumn: Bill To Customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 857d5f18-9b7e-4163-9651-89e0c7138d3d
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buying Group'
+		dataType: string
+		lineageTag: dd747bb4-22b5-4a56-99c8-27de0c52f941
+		summarizeBy: none
+		sourceColumn: Buying Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Contact'
+		dataType: string
+		lineageTag: 25d01258-36e5-4fee-a48e-c50d758b6565
+		summarizeBy: none
+		sourceColumn: Primary Contact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postal Code'
+		dataType: string
+		lineageTag: f24a0486-5688-4187-8ea2-9dee3091e10e
+		summarizeBy: none
+		sourceColumn: Postal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valid From'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6041e861-c84d-4ce8-aa37-75648bc5a967
+		summarizeBy: none
+		sourceColumn: Valid From
+
+		variation Variation
+			isDefault
+			relationship: e4108e08-4963-4423-9c8a-82b1450972ce
+			defaultHierarchy: LocalDateTable_3ae42203-3be2-4fe3-9558-28d0b374cf9e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valid To'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ea74da2d-8d8a-49ca-adf7-68eff0c46e5a
+		summarizeBy: none
+		sourceColumn: Valid To
+
+		variation Variation
+			isDefault
+			relationship: 60250213-b8b0-4b6a-a0c1-7ecc49d0df97
+			defaultHierarchy: LocalDateTable_a9c86bf0-96b7-4385-b460-b11795df2bbb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lineage Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 257cdb19-9b1f-4225-bb59-652f04e318c4
+		summarizeBy: count
+		sourceColumn: Lineage Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customer = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("LIMBO_BIBEK\BACHELOR", "WideWorldImportersDW"),
+				  #"Navigation 1" = Source{[Schema = "Dimension", Item = "Customer"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

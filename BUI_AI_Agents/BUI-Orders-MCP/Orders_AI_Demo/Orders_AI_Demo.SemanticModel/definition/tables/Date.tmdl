@@ -1,0 +1,162 @@
+table Date
+	lineageTag: f32887d4-75fb-4e09-9ab6-ad44a37b38f1
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d9ff38a0-8a56-4bb9-b538-612fd9249e94
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 567363c5-b04b-47ad-a7d5-112a9e00f853
+			defaultHierarchy: LocalDateTable_b2c453de-ce96-447f-873a-99e2ab650fac.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Day Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1035c458-3ef6-4ee0-823a-403fc49295da
+		summarizeBy: sum
+		sourceColumn: Day Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: string
+		lineageTag: dddb0046-b26b-4015-a1a1-9239eef6fd4e
+		summarizeBy: none
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 54fa92b6-2944-4aeb-b8fb-1cb22c80298e
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Short Month'
+		dataType: string
+		lineageTag: f5c4cfa6-d047-4364-8438-5a445bf813de
+		summarizeBy: none
+		sourceColumn: Short Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 651bae04-2a71-4aad-a982-1510a5721e38
+		summarizeBy: sum
+		sourceColumn: Calendar Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Month Label'
+		dataType: string
+		lineageTag: 97a19ff6-bbb3-4e28-b205-7eaf2e0738d1
+		summarizeBy: none
+		sourceColumn: Calendar Month Label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: cceddce6-fd29-4bd0-9e5f-4e772de2041f
+		summarizeBy: sum
+		sourceColumn: Calendar Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Year Label'
+		dataType: string
+		lineageTag: 09813b99-5365-4461-a098-ee93a2bd52db
+		summarizeBy: none
+		sourceColumn: Calendar Year Label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 59923794-bb38-48c1-a1d5-b01814e7d0da
+		summarizeBy: sum
+		sourceColumn: Fiscal Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Month Label'
+		dataType: string
+		lineageTag: 395ee8c4-44ae-4003-9500-2a9bd277c0cd
+		summarizeBy: none
+		sourceColumn: Fiscal Month Label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 546f2edb-aad3-4f20-925d-a31f45109977
+		summarizeBy: sum
+		sourceColumn: Fiscal Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year Label'
+		dataType: string
+		lineageTag: 03aae3e9-b435-4055-b9b6-4ead98015d74
+		summarizeBy: none
+		sourceColumn: Fiscal Year Label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ISO Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 76a29a3c-d0eb-4b9a-871a-a81d83e3903b
+		summarizeBy: sum
+		sourceColumn: ISO Week Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month' =
+			
+			FORMAT('Date'[Date], "yyyy-MM")
+		lineageTag: b41dbfe5-ab3a-4004-9986-6b4cab0cdefc
+		summarizeBy: none
+		sortByColumn: 'Year Month Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Sort' =
+			
+			YEAR('Date'[Date]) * 100
+			    + MONTH('Date'[Date])
+		formatString: 0
+		lineageTag: f4923d27-5d7f-45d6-a07b-6600f6402df6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("LIMBO_BIBEK\BACHELOR", "WideWorldImportersDW"),
+				  #"Navigation 1" = Source{[Schema = "Dimension", Item = "Date"]}[Data],
+				  #"Changed column type" = Table.TransformColumnTypes(#"Navigation 1", {{"Date", type date}})
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

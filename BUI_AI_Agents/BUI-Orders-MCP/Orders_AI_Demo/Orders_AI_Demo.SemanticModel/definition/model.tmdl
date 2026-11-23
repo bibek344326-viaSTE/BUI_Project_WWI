@@ -1,0 +1,34 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-DK
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["City","Customer","Date","Employee","Stock Item","Orders"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table City
+ref table DateTableTemplate_342d11d0-323e-4f4f-9abe-9fdaf2a9b1b2
+ref table LocalDateTable_beb5cb46-c169-4a77-b0a9-46b88562ecae
+ref table LocalDateTable_b0c28b9f-5335-47b7-9f9c-3a1568269196
+ref table Customer
+ref table LocalDateTable_3ae42203-3be2-4fe3-9558-28d0b374cf9e
+ref table LocalDateTable_a9c86bf0-96b7-4385-b460-b11795df2bbb
+ref table Date
+ref table LocalDateTable_b2c453de-ce96-447f-873a-99e2ab650fac
+ref table Employee
+ref table LocalDateTable_be069568-ad41-437b-90ec-4bd4c4f24e7c
+ref table LocalDateTable_a8fe6dee-4b6f-4d48-b836-97143011c9f1
+ref table 'Stock Item'
+ref table LocalDateTable_3493ddd0-bd35-4145-abd0-ca0a8780f550
+ref table LocalDateTable_02a11598-d7ad-4a2f-a3da-a952fd1299d0
+ref table Orders
+
+ref cultureInfo en-US
+

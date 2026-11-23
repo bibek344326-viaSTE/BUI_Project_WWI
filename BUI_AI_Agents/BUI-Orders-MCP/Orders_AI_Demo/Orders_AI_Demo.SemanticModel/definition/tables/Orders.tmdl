@@ -1,0 +1,268 @@
+table Orders
+	lineageTag: 536fd243-0418-472e-bd7d-bb5b59aadba8
+
+	measure 'Order Count' =
+			
+			DISTINCTCOUNT('Orders'[WWI Order ID])
+		formatString: 0
+		lineageTag: 69318e94-e7cd-4352-9280-b0c26ab378d5
+
+		changedProperty = IsHidden
+
+	measure 'Ordered Quantity' =
+			
+			SUM('Orders'[Quantity])
+		formatString: 0
+		lineageTag: a49456b2-2cda-426d-9b1e-e3cb71165fee
+
+		changedProperty = IsHidden
+
+	measure 'Order Value Excl. Tax' =
+			
+			SUM('Orders'[Total Excluding Tax])
+		formatString: 0.00
+		lineageTag: 3d716f9d-d470-4ad7-9274-0c33788dabe6
+
+		changedProperty = IsHidden
+
+	measure 'Average Order Value' =
+			
+			DIVIDE(
+			    [Order Value Excl. Tax],
+			    [Order Count]
+			)
+		formatString: 0.00
+		lineageTag: 896a99a9-3400-4810-9c67-8d6ff5e6603c
+
+		changedProperty = IsHidden
+
+	column 'Order Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: ec140c8e-22cd-48f7-9f6c-5d79f9bdd301
+		summarizeBy: count
+		sourceColumn: Order Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'City Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1524a682-87cb-4c49-b253-62a8f6aa1567
+		summarizeBy: none
+		sourceColumn: City Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8637f601-1e0d-484b-9215-55d712695548
+		summarizeBy: none
+		sourceColumn: Customer Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Stock Item Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: dee981b2-320c-4f90-b587-2b8897bb46bf
+		summarizeBy: none
+		sourceColumn: Stock Item Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date Key'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: aeabe4fa-dbed-4900-a9a2-2034b0361e74
+		summarizeBy: none
+		sourceColumn: Order Date Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Picked Date Key'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cd2413a4-b2e1-4699-8bc9-d1100d10cf66
+		summarizeBy: none
+		sourceColumn: Picked Date Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Salesperson Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9aa95093-510c-48cc-858e-f78b6a70270f
+		summarizeBy: count
+		sourceColumn: Salesperson Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Picker Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 910958f8-13fd-4bb8-948d-da9b4a3ebdc6
+		summarizeBy: none
+		sourceColumn: Picker Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WWI Order ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1af8b0e5-a88a-4baa-b1c6-26a05a20a294
+		summarizeBy: count
+		sourceColumn: WWI Order ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WWI Backorder ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3948ef40-47dc-412f-8754-307d43d958d0
+		summarizeBy: count
+		sourceColumn: WWI Backorder ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: e41202cc-b59f-475b-93ac-aff1f0af7d30
+		summarizeBy: none
+		sourceColumn: Description
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Package
+		dataType: string
+		lineageTag: 09d97ceb-3273-4f71-8e6c-61c60ccec3e7
+		summarizeBy: none
+		sourceColumn: Package
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: e99c4437-71b6-4e3f-9b5d-5ca625ead567
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Price'
+		dataType: double
+		lineageTag: 8b08992b-fe1f-4a65-b7c4-1311a375ba6f
+		summarizeBy: sum
+		sourceColumn: Unit Price
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tax Rate'
+		dataType: double
+		lineageTag: b80eae5a-bca4-473b-a54b-e47a1c8d26c0
+		summarizeBy: sum
+		sourceColumn: Tax Rate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Excluding Tax'
+		dataType: double
+		lineageTag: dca4bcad-746b-4382-a75b-23c26ee548a9
+		summarizeBy: sum
+		sourceColumn: Total Excluding Tax
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tax Amount'
+		dataType: double
+		lineageTag: 759253cf-7439-410d-b212-22e2ba327102
+		summarizeBy: sum
+		sourceColumn: Tax Amount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Including Tax'
+		dataType: double
+		lineageTag: b048bb33-1d86-4ae6-83c7-a52176b4c712
+		summarizeBy: sum
+		sourceColumn: Total Including Tax
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Lineage Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 931489f8-7d09-41af-91af-335471b6bb23
+		summarizeBy: count
+		sourceColumn: Lineage Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("LIMBO_BIBEK\BACHELOR", "WideWorldImportersDW"),
+				  #"Navigation 1" = Source{[Schema = "Fact", Item = "Order"]}[Data],
+				  #"Changed column type" = Table.TransformColumnTypes(#"Navigation 1", {{"Order Date Key", type date}, {"Quantity", Int64.Type}, {"Total Excluding Tax", type number}})
+				in
+				  #"Changed column type"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
